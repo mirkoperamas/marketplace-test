@@ -1,0 +1,27 @@
+@use "/src/styles/base/breakpoints" as breakpoints;
+@use "/src/styles/base/colors" as colors;
+@use "/src/styles/base/utilities" as utilities;
+@use "/src/styles/base/typography" as typography;
+@use "/src/styles/base/positions" as positions;
+
+.profile {
+  @include utilities.total-flexbox-params(flex, center, center);
+  cursor: pointer;
+  & > div {
+    @include utilities.total-flexbox-params(flex, center, auto);
+    gap: 0.5rem;
+    & h5 {
+      font-size: 13px;
+      @include breakpoints.medium {
+        font-size: 11px;
+      }
+    }
+    & small {
+      font-size: 12px;
+      text-transform: none;
+      @include breakpoints.medium {
+        font-size: 10px;
+      }
+    }
+  }
+}

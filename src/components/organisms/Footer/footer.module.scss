@@ -1,0 +1,22 @@
+@use "/src/styles/base/breakpoints" as breakpoints;
+@use "/src/styles/base/colors" as colors;
+@use "/src/styles/base/utilities" as utilities;
+@use "/src/styles/base/typography" as typography;
+@use "/src/styles/base/positions" as positions;
+
+.footer {
+  width: 100%;
+  padding: 3rem 2%;
+  text-align: center;
+  background: colors.$gray20;
+  font-size: 18px;
+  @include breakpoints.medium {
+    font-size: 11px;
+  }
+  & > a {
+    color: colors.$primary;
+    display: inline-block;
+    font-style: italic;
+    font-weight: bold;
+  }
+}

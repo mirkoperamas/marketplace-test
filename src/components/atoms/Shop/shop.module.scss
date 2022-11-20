@@ -1,0 +1,13 @@
+@use "/src/styles/base/breakpoints" as breakpoints;
+@use "/src/styles/base/colors" as colors;
+@use "/src/styles/base/utilities" as utilities;
+@use "/src/styles/base/typography" as typography;
+@use "/src/styles/base/positions" as positions;
+
+.shop {
+  padding-right: 1rem;
+  border-right: 2px solid colors.$gray30;
+  @include breakpoints.medium {
+    padding-right: 0.5rem;
+  }
+}

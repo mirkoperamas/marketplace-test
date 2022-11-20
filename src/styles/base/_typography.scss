@@ -1,0 +1,42 @@
+/*
+  rubik
+  ==========================================================================
+*/
+
+/* ----RUBIK--- */
+$Rubik70: "Rubik-Black";
+$Rubik60: "Rubik-ExtraBold";
+$Rubik50: "Rubik-Bold";
+$Rubik40: "Rubik-Medium";
+$Rubik30: "Rubik-Regular";
+$Rubik20: "Rubik-Light";
+$Rubik10: "Rubik-Thin";
+
+@font-face {
+  font-family: $Rubik70;
+  src: url("../fonts/Rubik/Rubik-Black.ttf");
+}
+@font-face {
+  font-family: $Rubik60;
+  src: url("../fonts/Rubik/Rubik-ExtraBold.ttf");
+}
+@font-face {
+  font-family: $Rubik50;
+  src: url("../fonts/Rubik/Rubik-Bold.ttf");
+}
+@font-face {
+  font-family: $Rubik40;
+  src: url("../fonts/Rubik/Rubik-Medium.ttf");
+}
+@font-face {
+  font-family: $Rubik30;
+  src: url("../fonts/Rubik/Rubik-Regular.ttf");
+}
+@font-face {
+  font-family: $Rubik20;
+  src: url("../fonts/Rubik/Rubik-Light.ttf");
+}
+@font-face {
+  font-family: $Rubik10;
+  src: url("../fonts/Rubik/Rubik-Thin.ttf");
+}
