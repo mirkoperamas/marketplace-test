@@ -15,10 +15,12 @@ export * from "./organisms/Header/Header";
 export * from "./organisms/Products/Products";
 export * from "./organisms/Footer/Footer";
 export * from "./organisms/History/History";
+export * from "./organisms/Product/Product";
 
 /* -----PAGES----- */
 export * from "./pages/HomeView";
 export * from "./pages/HistoryView";
+export * from "./pages/ProductView";
 
 /* -----CONTAINERS----- */
 export * from "./containers/Content/Content";

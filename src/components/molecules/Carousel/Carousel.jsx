@@ -27,8 +27,7 @@ export const Carousel = () => {
         {bannersDb == "" && (
           <SwiperSlide>
             <div
-              style={{ background: "#e1e1e1" }}
-              className={classes.carousel__slide}
+              className={`${classes.carousel__default} ${classes.carousel__slide}`}
             ></div>
           </SwiperSlide>
         )}

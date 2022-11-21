@@ -7,8 +7,7 @@
 .head {
   width: 100%;
   height: auto;
-  padding-top: 4rem;
-  margin-bottom: 3rem;
+  padding: 4rem 0;
   @include utilities.total-flexbox-params(flex, center, space-between);
   & > h2 {
     font-size: 25px;

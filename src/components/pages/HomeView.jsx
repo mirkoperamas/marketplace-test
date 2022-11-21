@@ -16,18 +16,12 @@ export const HomeView = () => {
   return (
     <Viewport>
       <Carousel />
-      <ContentBg>
-        <Products
-          productsDb={productsDb}
-          loading={loading}
-          productsArr={productsArr}
-          setProductsArr={setProductsArr}
-        />
-      </ContentBg>
+      <Products
+        productsDb={productsDb}
+        loading={loading}
+        productsArr={productsArr}
+        setProductsArr={setProductsArr}
+      />
     </Viewport>
   );
-};
-
-const ContentBg = ({ children }) => {
-  return <div style={{ background: "#f2f2f2" }}>{children}</div>;
 };
