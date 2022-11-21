@@ -4,17 +4,17 @@
 @use "/src/styles/base/typography" as typography;
 @use "/src/styles/base/positions" as positions;
 
-.carousel {
+.categories {
   width: 100%;
-  height: 30rem;
+  height: auto;
+  background: colors.$white;
+  grid-row: 1 / 3;
+  padding: 5%;
+  text-transform: capitalize;
   @include breakpoints.medium {
     display: none;
   }
-  &__slide {
-    width: 100vw;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  & > div {
+    padding: 0.8rem 0;
   }
 }

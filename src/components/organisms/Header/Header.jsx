@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { MainContainer, Shop, Profile } from "../../";
+import { Content, Shop, Profile } from "../../";
+import { Link } from "react-router-dom";
 import classes from "./header.module.scss";
 
 export const Header = () => {
   return (
     <header className={classes.header}>
-      <MainContainer>
+      <Content>
         <div className={classes.header__main}>
           <div>
             <img src="/img/marketplace-total-logo.png" alt="market-logo" />
@@ -17,11 +17,11 @@ export const Header = () => {
         </div>
         <div className={classes.header__links}>
           <div>
-            <a>home</a>
-            <a>historial</a>
+            <Link to="/">home</Link>
+            <Link to="/history">historial</Link>
           </div>
         </div>
-      </MainContainer>
+      </Content>
     </header>
   );
 };

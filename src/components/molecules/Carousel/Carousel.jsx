@@ -4,8 +4,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
+import { useBanners } from "../../../hooks/useBanners";
 
 export const Carousel = () => {
+  const { bannersDb } = useBanners();
+
   return (
     <section className={classes.carousel}>
       <Swiper
@@ -16,36 +19,32 @@ export const Carousel = () => {
           delay: 5000,
           disableOnInteraction: false,
         }}
-        // navigation={true}
         pagination={{
           clickable: true,
         }}
         modules={[Autoplay, Navigation, Pagination]}
       >
-        <SwiperSlide>
-          <div
-            style={{ background: "#ff000050" }}
-            className={classes.carousel__slide}
-          ></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            style={{ background: "#0000ff50" }}
-            className={classes.carousel__slide}
-          ></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            style={{ background: "#00800050" }}
-            className={classes.carousel__slide}
-          ></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            style={{ background: "#ffff0050" }}
-            className={classes.carousel__slide}
-          ></div>
-        </SwiperSlide>
+        {bannersDb == "" && (
+          <SwiperSlide>
+            <div
+              style={{ background: "#ff000050" }}
+              className={classes.carousel__slide}
+            ></div>
+          </SwiperSlide>
+        )}
+
+        {bannersDb?.map(({ id, image }) => {
+          return (
+            <SwiperSlide key={id}>
+              <div
+                style={{
+                  backgroundImage: `url(${image})`,
+                }}
+                className={classes.carousel__slide}
+              ></div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </section>
   );

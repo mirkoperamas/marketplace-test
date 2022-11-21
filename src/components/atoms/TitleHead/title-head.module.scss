@@ -4,17 +4,15 @@
 @use "/src/styles/base/typography" as typography;
 @use "/src/styles/base/positions" as positions;
 
-.carousel {
+.head {
   width: 100%;
-  height: 30rem;
-  @include breakpoints.medium {
-    display: none;
-  }
-  &__slide {
-    width: 100vw;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: auto;
+  padding-top: 4rem;
+  margin-bottom: 3rem;
+  @include utilities.total-flexbox-params(flex, center, space-between);
+  & > h2 {
+    font-size: 25px;
+    font-family: typography.$Rubik30;
+    text-transform: capitalize;
   }
 }

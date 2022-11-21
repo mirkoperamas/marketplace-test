@@ -4,17 +4,9 @@
 @use "/src/styles/base/typography" as typography;
 @use "/src/styles/base/positions" as positions;
 
-.carousel {
-  width: 100%;
-  height: 30rem;
-  @include breakpoints.medium {
-    display: none;
-  }
-  &__slide {
-    width: 100vw;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.categories {
+  @include utilities.total-flexbox-params(flex, center, flex-end);
+  &__menu {
+    padding: 1rem 0.8rem;
   }
 }

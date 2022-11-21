@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const usePagination = (data, itemsPerPage) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const maxPage = Math.ceil(data.length / itemsPerPage);
+  const [dataCalc, setDataCalc] = useState(0);
+
+  useEffect(() => {
+    if (data != "") {
+      setDataCalc(data.length / itemsPerPage);
+    }
+  }, [data]);
+
+  const maxPage = Math.ceil(dataCalc);
 
   const currentData = () => {
     const begin = (currentPage - 1) * itemsPerPage;

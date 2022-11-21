@@ -4,17 +4,13 @@
 @use "/src/styles/base/typography" as typography;
 @use "/src/styles/base/positions" as positions;
 
-.carousel {
+.pagination {
   width: 100%;
-  height: 30rem;
+  background: colors.$white;
+  padding: 2rem 2%;
+  @include utilities.total-flexbox-params(flex, center, flex-end);
   @include breakpoints.medium {
-    display: none;
-  }
-  &__slide {
-    width: 100vw;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    grid-column: 1/3;
+    @include utilities.total-flexbox-params(flex, center, center);
   }
 }
