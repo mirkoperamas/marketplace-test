@@ -17,7 +17,7 @@
   font-family: typography.$Rubik30;
   border-bottom: 2px solid red;
   @include breakpoints.x-small {
-    height: 8.5rem;
+    height: 9rem;
   }
   & a {
     color: colors.$black;

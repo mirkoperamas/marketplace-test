@@ -11,6 +11,12 @@
   @include breakpoints.medium {
     height: 18rem;
   }
+  @include breakpoints.small {
+    height: 13rem;
+  }
+  @include breakpoints.x-small {
+    height: 10rem;
+  }
   &__default {
     background: colors.$gray20;
   }
