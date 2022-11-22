@@ -27,9 +27,24 @@
       transform: scale(1.2);
       filter: brightness(0.8);
     }
+    &:hover button {
+      display: block !important;
+    }
+
     & > div:first-child {
+      position: relative;
       overflow: hidden;
       border-bottom: 1px solid colors.$gray10;
+      & div {
+        width: 100%;
+        @include utilities.total-flexbox-params(flex, center, center);
+        flex-direction: column;
+        position: absolute;
+        bottom: 1rem;
+        & button {
+          display: none;
+        }
+      }
     }
     & > div:last-child {
       position: relative;

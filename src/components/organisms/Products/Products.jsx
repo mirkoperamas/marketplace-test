@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import classes from "./products.module.scss";
 import {
   Content,
@@ -8,13 +8,11 @@ import {
   TitleHead,
 } from "../../";
 import { usePagination } from "../../../hooks/usePagination";
+import ProductContext from "../../../contexts/products/ProductContext";
 
-export const Products = ({
-  productsDb,
-  loading,
-  productsArr,
-  setProductsArr,
-}) => {
+export const Products = ({ productsArr, setProductsArr }) => {
+  const { products } = useContext(ProductContext);
+
   const [page, setPage] = useState(1);
   const [countCalc, setCountCalc] = useState(0);
   const paginate = 5;
@@ -27,13 +25,13 @@ export const Products = ({
   };
 
   useEffect(() => {
-    if (productsDb != "") {
+    if (products != "") {
       setCountCalc(productsArr.length / paginate);
     }
   }, [productsArr]);
 
   const getProductsByCategory = (p) => {
-    const arrFiltered = productsDb.filter(({ category }) => category === p);
+    const arrFiltered = products.filter(({ category }) => category === p);
     setProductsArr(arrFiltered);
     setPage(1);
     dataDb.jump(1);
@@ -54,13 +52,12 @@ export const Products = ({
           />
 
           <PaginationProducts
-            productsDb={productsDb}
             page={page}
             count={count}
             handleChange={handleChange}
           />
 
-          <ListProducts loading={loading} dataDb={dataDb} />
+          <ListProducts dataDb={dataDb} />
         </div>
       </Content>
     </section>

@@ -1,26 +1,23 @@
-import {
-  Header,
-  HomeView,
-  Footer,
-  HistoryView,
-  ProductView,
-} from "./components";
+import { Header, HomeView, Footer, HistoryView } from "./components";
 import { Routes, Route, Navigate, Outlet } from "react-router-dom";
+
+import ProductState from "./contexts/products/ProductState";
 
 export const App = () => {
   return (
-    <MaxWd>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Outlet />}>
-          <Route index element={<HomeView />} />
-          <Route path="history" element={<HistoryView />} />
-          <Route path="/:id" element={<ProductView />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Route>
-      </Routes>
-      <Footer />
-    </MaxWd>
+    <ProductState>
+      <MaxWd>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Outlet />}>
+            <Route index element={<HomeView />} />
+            <Route path="history" element={<HistoryView />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Route>
+        </Routes>
+        <Footer />
+      </MaxWd>
+    </ProductState>
   );
 };
 

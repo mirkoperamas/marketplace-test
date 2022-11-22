@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import classes from "./categories.module.scss";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import { useProducts } from "../../../hooks/useProducts";
 import { useCategories } from "../../../hooks/useCategories";
+import ProductContext from "../../../contexts/products/ProductContext";
 
 export const Categories = ({ getProductsByCategory, setProductsArr }) => {
-  const { productsDb, loading } = useProducts();
   const { impCategoriesItems } = useCategories();
+  const { products, loading } = useContext(ProductContext);
 
   return (
     <div className={classes.categories}>
@@ -19,7 +19,7 @@ export const Categories = ({ getProductsByCategory, setProductsArr }) => {
       </div>
       <div>
         <List>
-          <div onClick={() => setProductsArr(productsDb)}>
+          <div onClick={() => setProductsArr(products)}>
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemText primary="todos" />

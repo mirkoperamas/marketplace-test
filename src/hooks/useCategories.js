@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
-import { useProducts } from "./useProducts";
+import { useContext, useEffect, useState } from "react";
+import ProductContext from "../contexts/products/ProductContext";
 
 export const useCategories = () => {
   const [categoriesItems, setCategoriesItems] = useState([]);
-  const { productsDb } = useProducts();
+
+  const { products } = useContext(ProductContext);
 
   useEffect(() => {
-    if (productsDb != "") {
-      productsDb.map(({ category }) => {
+    if (products != "") {
+      products.map(({ category }) => {
         return categoriesItems.push(category);
       });
     }
-  }, [productsDb]);
+  }, [products]);
 
   const impCategoriesItems = [...new Set(categoriesItems)];
 

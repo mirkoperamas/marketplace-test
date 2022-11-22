@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import classes from "./categories-mobile.module.scss";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
@@ -8,11 +8,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useCategories } from "../../../hooks/useCategories";
-import { useProducts } from "../../../hooks/useProducts";
+import ProductContext from "../../../contexts/products/ProductContext";
 
 export const CategoriesMobile = ({ getProductsByCategory, setProductsArr }) => {
-  const { productsDb, loading } = useProducts();
   const { impCategoriesItems } = useCategories();
+  const { products, loading } = useContext(ProductContext);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -49,7 +49,7 @@ export const CategoriesMobile = ({ getProductsByCategory, setProductsArr }) => {
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => {
-                setProductsArr(productsDb);
+                setProductsArr(products);
                 handleClose();
               }}
             >

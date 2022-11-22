@@ -1,27 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Carousel, Products, Viewport } from "../";
-import { useProducts } from "../../hooks/useProducts";
+import ProductContext from "../../contexts/products/ProductContext";
 
 export const HomeView = () => {
-  const { productsDb, loading } = useProducts();
-
+  const { products, getProducts } = useContext(ProductContext);
   const [productsArr, setProductsArr] = useState([]);
 
   useEffect(() => {
-    if (productsArr == "") {
-      setProductsArr(productsDb);
-    }
-  }, [productsDb]);
+    getProducts();
+  }, []);
+
+  useEffect(() => {
+    setProductsArr(products);
+  }, [products]);
 
   return (
     <Viewport>
       <Carousel />
-      <Products
-        productsDb={productsDb}
-        loading={loading}
-        productsArr={productsArr}
-        setProductsArr={setProductsArr}
-      />
+      <Products productsArr={productsArr} setProductsArr={setProductsArr} />
     </Viewport>
   );
 };

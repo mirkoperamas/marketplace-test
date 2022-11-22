@@ -1,11 +1,17 @@
+import { useContext } from "react";
 import classes from "./list-products.module.scss";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { useNavigate } from "react-router-dom";
+import ProductContext from "../../../contexts/products/ProductContext";
+import Button from "@mui/material/Button";
+import useBreakpoint from "../../../hooks/useBreakpoint";
 
-export const ListProducts = ({ loading, dataDb }) => {
+export const ListProducts = ({ dataDb }) => {
   const navigate = useNavigate();
+  const breakpoint = useBreakpoint();
+  const { loading } = useContext(ProductContext);
 
   const money = new Intl.NumberFormat("es-PE", {
     style: "currency",
@@ -22,11 +28,31 @@ export const ListProducts = ({ loading, dataDb }) => {
       {loading == false && <p>Loading...</p>}
       {dataDb
         .currentData()
-        .map(({ id, category, brand, name, image, price, discount }) => {
+        .map(({ id, brand, name, image, price, discount }) => {
           return (
-            <Card key={id} onClick={() => navigate(`/${id}`)}>
+            <Card
+              key={id}
+              onClick={() => {
+                console.log(id);
+              }}
+            >
               <div>
                 <CardMedia component="img" image={image} alt={`image-${id}`} />
+                <div
+                  style={{
+                    padding: "2rem 0",
+                    position: "absolute",
+                    bottom: "0",
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    size={breakpoint <= 576 ? "small" : "medium"}
+                    color="error"
+                  >
+                    {breakpoint <= 576 ? "Agregar" : "Agregar al carrito"}
+                  </Button>
+                </div>
               </div>
               <CardContent>
                 <h5>{brand}</h5>

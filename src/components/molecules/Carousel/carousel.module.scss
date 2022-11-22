@@ -9,7 +9,7 @@
   height: 30rem;
   background: colors.$gray20;
   @include breakpoints.medium {
-    display: none;
+    height: 18rem;
   }
   &__default {
     background: colors.$gray20;
