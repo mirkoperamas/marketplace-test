@@ -13,7 +13,6 @@
   margin: 0 auto;
   background: colors.$white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  text-transform: capitalize;
   font-family: typography.$Rubik30;
   border-bottom: 2px solid red;
   @include breakpoints.x-small {
@@ -54,6 +53,7 @@
   &__links {
     width: 100%;
     padding: 0.3rem 0;
+    text-transform: capitalize;
     @include breakpoints.x-small {
       margin-top: 1rem;
     }

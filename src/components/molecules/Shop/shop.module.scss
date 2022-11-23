@@ -10,4 +10,7 @@
   @include breakpoints.medium {
     padding-right: 0.5rem;
   }
+  @include breakpoints.small {
+    padding: 0;
+  }
 }

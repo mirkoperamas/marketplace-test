@@ -11,6 +11,7 @@
     @include utilities.total-flexbox-params(flex, center, auto);
     gap: 0.5rem;
     & h5 {
+      text-transform: capitalize;
       font-size: 13px;
       @include breakpoints.medium {
         font-size: 11px;

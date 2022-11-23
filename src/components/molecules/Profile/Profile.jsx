@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,51 +7,61 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
 import useBreakpoint from "../../../hooks/useBreakpoint";
 import classes from "./profile.module.scss";
+import AuthContext from "../../../contexts/auth/AuthContext";
 
 export const Profile = () => {
-  const [isLog, setIsLog] = useState(true);
+  const { login, logout, getAccount } = useContext(AuthContext);
+
   const breakpoint = useBreakpoint();
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+
+  const [anchorToLogMenu, setAnchorToLogMenu] = useState(null);
+  const open = Boolean(anchorToLogMenu);
+  const handleClickMenu = (event) => {
+    setAnchorToLogMenu(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseMenu = () => {
+    setAnchorToLogMenu(null);
   };
 
   return (
     <>
-      {!isLog && <a>Iniciar Sección</a>}
-      {isLog && (
+      {!getAccount && <a onClick={() => login()}>Ingresar con Google</a>}
+
+      {getAccount && (
         <div className={classes.profile}>
           <Tooltip title="cuenta">
-            <div onClick={handleClick}>
+            <div onClick={handleClickMenu}>
               <Avatar
                 alt="profile"
-                src="https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?s=612x612&w=0&k=20&c=kPvoBm6qCYzQXMAn9JUtqLREXe9-PlZyMl9i-ibaVuY="
+                src={getAccount?.profilePic}
+                referrerPolicy="no-referrer"
                 sx={{
                   width: breakpoint <= 576 ? 25 : 35,
                   height: breakpoint <= 576 ? 25 : 35,
                 }}
               />
               <div>
-                <h5>Mirko Peramas</h5>
-                <small>mirko@gmail.com</small>
+                <h5>{getAccount?.displayName}</h5>
+                <small>{getAccount?.email}</small>
               </div>
             </div>
           </Tooltip>
 
           <Menu
             id="profile"
-            anchorEl={anchorEl}
+            anchorEl={anchorToLogMenu}
             open={open}
-            onClose={handleClose}
+            onClose={handleCloseMenu}
             MenuListProps={{
               "aria-labelledby": "button",
             }}
           >
-            <MenuItem onClick={handleClose}>
+            <MenuItem
+              onClick={() => {
+                logout();
+                handleCloseMenu();
+              }}
+            >
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
